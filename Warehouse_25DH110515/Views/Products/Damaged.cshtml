@@ -1,0 +1,16 @@
+﻿@{ ViewBag.Title = "Ghi nhận hàng hỏng"; }
+<h2>Ghi nhận hàng hỏng</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label>Chọn sản phẩm:</label>
+        @Html.DropDownList("productID", null, new { @class = "form-control" })
+    </div>
+    <div class="form-group mt-2">
+        <label>Số lượng hỏng:</label>
+        <input type="number" name="quantityDamaged" class="form-control" required min="1" />
+    </div>
+    <button type="submit" class="btn btn-warning mt-3">Xác nhận ghi nhận hỏng</button>
+}

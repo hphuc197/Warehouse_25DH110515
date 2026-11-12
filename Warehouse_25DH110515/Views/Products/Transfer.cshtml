@@ -1,0 +1,20 @@
+﻿@{ ViewBag.Title = "Điều chuyển hàng"; }
+<h2>Điều chuyển hàng giữa hai sản phẩm cùng danh mục</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label>Sản phẩm nguồn (A):</label>
+        @Html.DropDownList("sourceID", null, new { @class = "form-control" })
+    </div>
+    <div class="form-group mt-2">
+        <label>Sản phẩm đích (B):</label>
+        @Html.DropDownList("destID", null, new { @class = "form-control" })
+    </div>
+    <div class="form-group mt-2">
+        <label>Số lượng điều chuyển (q):</label>
+        <input type="number" name="q" class="form-control" required min="1" />
+    </div>
+    <button type="submit" class="btn btn-info mt-3">Thực hiện điều chuyển</button>
+}

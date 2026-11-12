@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Warehouse_25DH110515.Models.Product>
+@{
+    ViewBag.Title = "Danh sách sản phẩm";
+}
+
+<h2>Danh sách sản phẩm</h2>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<table class="table table-bordered table-striped bg-white text-dark">
+    <tr>
+        <th>Tên sản phẩm</th>
+        <th>Danh mục</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Trạng thái tồn kho</th>
+        <th>Hành động</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        var status = "";
+        if (item.Quantity == 0) { status = "Hết hàng"; }
+        else if (item.Quantity >= 1 && item.Quantity <= 4) { status = "Sắp hết hàng"; }
+        else { status = "Còn hàng"; }
+
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@item.Category</td>
+            <td>@item.Price.ToString("N0") VNĐ</td>
+            <td>@item.Quantity</td>
+            <td><b>@status</b></td>
+            <td>
+                @if (item.Quantity == 0)
+                {
+                    using (Html.BeginForm("Delete", "Products", new { id = item.ProductID }, FormMethod.Post, new { @onsubmit = "return confirm('Bạn có chắc chắn muốn xóa sản phẩm hết hàng này không?');" }))
+                    {
+                        <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+                    }
+                }
+                else
+                {
+                    <span class="text-muted">Không thể xóa</span>
+                }
+            </td>
+        </tr>
+    }
+</table>

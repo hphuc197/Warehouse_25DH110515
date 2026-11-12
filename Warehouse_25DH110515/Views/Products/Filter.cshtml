@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Warehouse_25DH110515.Models.Product>
+@{
+    ViewBag.Title = "Lọc và sắp xếp sản phẩm";
+}
+
+<h2>Lọc và sắp xếp theo tồn kho</h2>
+
+@using (Html.BeginForm("Filter", "Products", FormMethod.Get))
+{
+    <div class="row mb-3">
+        <div class="col-md-3">
+            @Html.Label("Danh mục")
+            @Html.DropDownList("category", ViewBag.Categories as SelectList, "-- Tất cả danh mục --", new { @class = "form-control" })
+        </div>
+        <div class="col-md-2">
+            @Html.Label("Từ số lượng")
+            <input type="number" name="minQty" class="form-control" value="@Request.QueryString["minQty"]" />
+        </div>
+        <div class="col-md-2">
+            @Html.Label("Đến số lượng")
+            <input type="number" name="maxQty" class="form-control" value="@Request.QueryString["maxQty"]" />
+        </div>
+        <div class="col-md-4 align-self-end">
+            <button type="submit" class="btn btn-primary mt-4">Lọc dữ liệu</button>
+            <a href="@Url.Action("Filter", "Products", new { sortOrder = ViewBag.SortParam, category = Request.QueryString["category"], minQty = Request.QueryString["minQty"], maxQty = Request.QueryString["maxQty"] })" class="btn btn-secondary mt-4">Sắp xếp SL (@ViewBag.SortParam)</a>
+        </div>
+    </div>
+}
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<table class="table table-bordered mt-3">
+    <tr>
+        <th>Tên sản phẩm</th>
+        <th>Danh mục</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@item.Category</td>
+            <td>@item.Price.ToString("N0")</td>
+            <td>@item.Quantity</td>
+        </tr>
+    }
+</table>

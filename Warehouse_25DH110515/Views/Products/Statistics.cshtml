@@ -1,0 +1,23 @@
+﻿@{ ViewBag.Title = "Thống kê tồn kho"; }
+<h2>Thống kê tổng hợp kho hàng</h2>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card p-3 bg-light border">
+            <h4>Tổng số sản phẩm</h4>
+            <p class="display-4 text-primary">@ViewBag.TotalProducts</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3 bg-light border">
+            <h4>Tổng số đơn vị hàng tồn</h4>
+            <p class="display-4 text-success">@ViewBag.TotalQuantity</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3 bg-light border">
+            <h4>Sản phẩm sắp hết (1-4)</h4>
+            <p class="display-4 text-warning">@ViewBag.LowStockCount</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button><!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="utf-8" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>@ViewBag.Title - Quản Lý Kho Hàng</title>
+                    @Styles.Render("~/Content/css")
+                    @Scripts.Render("~/bundles/modernizr")
+                    <style>
+                        body {
+                            display: flex;
+                            flex-direction: column;
+                            min-height: 100vh;
+                        }
+
+                        .wrapper {
+                            display: flex;
+                            flex: 1;
+                        }
+
+                        .sidebar {
+                            width: 250px;
+                            background: #f8f9fa;
+                            padding: 15px;
+                            border-right: 1px solid #dee2e6;
+                        }
+
+                        .content {
+                            flex: 1;
+                            padding: 20px;
+                            background-color: #ffffff;
+                            color: #333333;
+                        }
+
+                        header {
+                            background: #343a40;
+                            color: white;
+                            padding: 15px;
+                            text-align: center;
+                        }
+
+                        footer {
+                            background: #f8f9fa;
+                            color: #333;
+                            text-align: center;
+                            padding: 10px;
+                            border-top: 1px solid #dee2e6;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <!-- HEADER -->
+                    <header>
+                        <h2>Họ và tên: Nguyễn Hoàng Phúc - MSSV: 25DH110515</h2>
+                        <p>Môn: Lập trình Web - Ca 3</p>
+                    </header>
+
+                    <div class="wrapper">
+                        <!-- MENU BÊN TRÁI (Câu 1) -->
+                        <nav class="sidebar">
+                            <h4>Chức năng</h4>
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index", "Products")">1. Danh sách sản phẩm</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Filter", "Products")">3. Lọc & Sắp xếp tồn kho</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Import", "Products")">4a. Nhập kho</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Damaged", "Products")">4b. Ghi nhận hàng hỏng</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Transfer", "Products")">5. Điều chuyển hàng</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Create", "Products")">6. Thêm sản phẩm mới</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Statistics", "Products")">7. Thống kê tồn kho</a></li>
+                            </ul>
+                        </nav>
+
+                        <!-- NỘI DUNG CHÍNH -->
+                        <div class="content">
+                            @RenderBody()
+                        </div>
+                    </div>
+
+                    <!-- FOOTER -->
+                    <footer>
+                        <p>Ngày tháng năm sinh: 19/07/2006</p>
+                    </footer>
+
+                    @Scripts.Render("~/bundles/jquery")
+                    @Scripts.Render("~/bundles/bootstrap")
+                    @RenderSection("scripts", required: false)
+                </body>
+            </html> 
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+       
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

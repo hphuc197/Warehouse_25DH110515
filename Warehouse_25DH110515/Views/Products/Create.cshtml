@@ -1,0 +1,25 @@
+﻿@model Warehouse_25DH110515.Models.Product
+@{ ViewBag.Title = "Thêm sản phẩm mới"; }
+<h2>Thêm sản phẩm mới</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProductName)
+        @Html.TextBoxFor(m => m.ProductName, new { @class = "form-control" })
+    </div>
+    <div class="form-group mt-2">
+        @Html.LabelFor(m => m.Category)
+        @Html.TextBoxFor(m => m.Category, new { @class = "form-control" })
+    </div>
+    <div class="form-group mt-2">
+        @Html.LabelFor(m => m.Price)
+        @Html.TextBoxFor(m => m.Price, new { @class = "form-control", type = "number", step = "0.01" })
+    </div>
+    <div class="form-group mt-2">
+        @Html.LabelFor(m => m.Quantity)
+        @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", type = "number" })
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Lưu sản phẩm</button>
+}
